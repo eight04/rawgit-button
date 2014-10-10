@@ -17,9 +17,15 @@ function replace(){
 	
 	var url = location.href.replace("github.com", "rawgit.com");
 	url = url.replace("/blob/", "/");
-	btn.href = url;
+	
+	var newBtn = document.createElement("a");
+	newBtn.href = url;
+	newBtn.className = "minibutton";
+	newBtn.textContent = "Rawgit";
+	
+	btn.parentNode.insertBefore(newBtn, btn.nextSibling);
+	
 	btn.classList.add("rawgit");
-	btn.textContent = "Rawgit";
 }
 
 var container = document.querySelector("#js-repo-pjax-container");
