@@ -1,4 +1,4 @@
 rawgit-button
 =============
 
-An userscript to add "Rawgit" button on github. 
+An userscript to add "Rawgit" button on github.
