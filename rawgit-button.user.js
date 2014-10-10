@@ -9,3 +9,8 @@
 
 "use strict";
 
+var url = location.href.replace("github.com", "rawgit.com");
+url = url.replace("/blob/", "/");
+var btn = document.querySelector("#raw-url");
+btn.href = url;
+btn.textContent = "Rawgit";
