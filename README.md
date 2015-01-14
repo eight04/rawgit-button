@@ -3,7 +3,7 @@ rawgit-button
 
 An userscript to Add "[Rawgit][1]" button on github.
 
-![demo](//i.imgur.com/eECqdwO.png)
+![demo](https://i.imgur.com/eECqdwO.png)
 
 [1]: https://rawgit.com/
 
