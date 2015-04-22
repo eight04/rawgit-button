@@ -4,7 +4,7 @@
 // @description	An userscript to add "Rawgit" button on github.
 // @include		https://github.com/*
 // @include		https://gist.github.com/*
-// @version		1.2.0
+// @version		1.2.1
 // @grant 		none
 // ==/UserScript==
 
@@ -26,10 +26,10 @@ function replace(){
 		url = url.replace("/blob/", "/");
 	}
 
-	var newBtn = document.createElement("a");
+	var newBtn = btn.cloneNode(false);
 	newBtn.href = url;
-	newBtn.className = "minibutton";
 	newBtn.textContent = "Rawgit";
+	newBtn.removeAttribute("id");
 
 	btn.parentNode.insertBefore(newBtn, btn.nextSibling);
 
@@ -41,7 +41,7 @@ var container =
 	document.querySelector("#js-pjax-container");
 
 if (container) {
-	new MutationObserver(function(e){
+	new MutationObserver(function(){
 		replace();
 	}).observe(container, {childList: true, subtree: true});
 }
