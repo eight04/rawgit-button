@@ -8,22 +8,33 @@
 // @grant 		none
 // ==/UserScript==
 
+/*
+https://gist.github.com/eight04/186267c150a2dfc0580a/raw/812fd7b418e0a157f02caa144a15c55c06ced8ac/uao_decode.py
+https://rawgit.com/eight04/186267c150a2dfc0580a/raw/812fd7b418e0a157f02caa144a15c55c06ced8ac/uao_decode.py
+
+https://github.com/eight04/linky-square/raw/master/demo.html
+https://rawgit.com/eight04/linky-square/master/demo.html
+*/
+
 "use strict";
 
 function replace(){
 	// Check if raw-url button exists
-	var btn = document.querySelector("#raw-url") || document.querySelector(".raw-url");
-	if (!btn || btn.classList.contains("rawgit")) {
-		return;
+	var btns, i;
+	btns = document.querySelectorAll(".file-actions a:not(.rawgit)");
+	for (i = 0; i < btns.length; i++) {
+		if (btns[i].textContent == "Raw") {
+			createButton(btns[i]);
+		}
 	}
+}
 
-	var url = location.href;
-	if (url.indexOf("gist.github.com") > -1) {
+function createButton(btn) {
+	var url = btn.href;
+	if (url.indexOf("gist.github.com") >= 0) {
 		url = url.replace("gist.github.com", "rawgit.com");
-		url = url + "/raw/";
 	} else {
-		url = url.replace("github.com", "rawgit.com");
-		url = url.replace("/blob/", "/");
+		url = url.replace(/github\.com\/([^/]+\/[^/]+)\/raw/, "rawgit.com/$1");
 	}
 
 	var newBtn = btn.cloneNode(false);
@@ -32,8 +43,17 @@ function replace(){
 	newBtn.removeAttribute("id");
 
 	btn.parentNode.insertBefore(newBtn, btn.nextSibling);
-
 	btn.classList.add("rawgit");
+	
+	if (!btn.parentNode.classList.contains("btn-group")) {
+		var parent = btn.parentNode,
+			group = document.createElement("div");
+		group.className = "btn-group";
+		while (parent.childNodes.length) {
+			group.appendChild(parent.childNodes[0]);
+		}
+		parent.appendChild(group);
+	}
 }
 
 var container =
