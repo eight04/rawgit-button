@@ -4,7 +4,7 @@
 // @description	An userscript to add "Rawgit" button on github.
 // @include		https://github.com/*
 // @include		https://gist.github.com/*
-// @version		1.2.1
+// @version		1.2.2
 // @grant 		none
 // ==/UserScript==
 
