@@ -1,6 +1,8 @@
 rawgit-button
 =============
 
+**rawgit.com has been shut down. You may want to switch to [raw-githack-button](https://github.com/eight04/raw-githack-button).**
+
 An userscript to add "[Rawgit][1]" button on github.
 
 ![demo](https://i.imgur.com/eECqdwO.png)
